@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<table class="table table-responsive">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Matricule</th>
+            <th scope="col">Nom Complet</th>
+            <th scope="col">Date Naissance</th>
+            <th scope="col">Salaire</th>
+            <th scope="col">Libelle</th>
+            <th scope="col">Modification</th>
+            <th scope="col">Suppression</th>
+          </tr>
+        </thead>
+        <tbody>
+    {% for employes in employe %}
+        <tr>
+
+            <td>
+                    {{employes.matricule}}
+            </td>
+            <td>
+                    {{employes.nomComplet}}
+            </td>
+            <td>
+                    {{employes.dateNaissance | date('d/m/Y')}}
+            </td>
+            <td>
+                        {{employes.salaire}}
+                </td>
+            <td>
+                    {{employes.serviceId.libelle}}
+            </td>
+            <td><button class="btn btn-success"><a href="{{path('modifier',{'id':employes.id})}}">Modifier</a></button>
+            </td>
+            <td><button class="btn btn-danger"><a href="{{path('delete',{'id':employes.id})}}">Supprimer</a></button>
+            </td>
+        </tr>
+        
+    {% endfor %}
+</tbody>
+</table>
+
+
+{% endblock %}
