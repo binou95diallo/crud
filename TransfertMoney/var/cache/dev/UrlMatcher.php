@@ -83,8 +83,8 @@ return [
     ],
     [ // $dynamicRoutes
         35 => [[['_route' => '_twig_error_test', '_controller' => 'twig.controller.preview_error::previewErrorPageAction', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        76 => [[['_route' => 'admin_partenaire_show', '_controller' => 'App\\Controller\\AdminPartenaireController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        88 => [[['_route' => 'admin_partenaire_edit', '_controller' => 'App\\Controller\\AdminPartenaireController::edit'], ['id'], ['GET' => 0], null, false, false, null]],
+        76 => [[['_route' => 'adminPartenaireShow', '_controller' => 'App\\Controller\\AdminPartenaireController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        88 => [[['_route' => 'adminPartenaireEdit', '_controller' => 'App\\Controller\\AdminPartenaireController::edit'], ['id'], ['GET' => 0], null, false, false, null]],
         95 => [[['_route' => 'admin_partenaire_delete', '_controller' => 'App\\Controller\\AdminPartenaireController::delete'], ['id'], ['DELETE' => 0], null, false, true, null]],
         123 => [[['_route' => 'admin_systeme_show', '_controller' => 'App\\Controller\\AdminSystemeController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         136 => [[['_route' => 'admin_systeme_edit', '_controller' => 'App\\Controller\\AdminSystemeController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
