@@ -36,16 +36,27 @@ class AdminPartenaireController extends AbstractController
         $adminPartenaire = new AdminPartenaire();
         $form = $this->createForm(AdminPartenaireType::class, $adminPartenaire);
         $form->handleRequest($request);
+
+        //if ($form->isSubmitted() && $form->isValid()) {
+            //$data = $request->getContent();
+            //$adminPartenaire= $this->get('jms_serializer')->deserialize($data);
             $adminPartenaire=$serializer->deserialize($request->getContent(), AdminPartenaire::class, 'json');
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($adminPartenaire);
             $entityManager->flush();
 
             return new Response('', Response::HTTP_CREATED);
+            //return $this->redirectToRoute('admin_partenaire_index');
+       // }
+
+        return $this->render('adminPartenaire/new.html.twig', [
+            'admin_partenaire' => $adminPartenaire,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
-     * @Route("/{id}", name="adminPartenaireShow", methods={"GET"})
+     * @Route("/{id}", name="admin_partenaire_show", methods={"GET"})
      */
     public function show(AdminPartenaire $adminPartenaire): Response
     {

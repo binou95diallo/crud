@@ -1449,6 +1449,14 @@
         <argument>2048</argument>
       </call>
       <call method="addListener">
+        <argument>console.command</argument>
+        <argument type="collection">
+          <argument type="service" id="debug.debug_handlers_listener"/>
+          <argument>configure</argument>
+        </argument>
+        <argument>2048</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.exception</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
@@ -5055,6 +5063,12 @@
         <argument key="adminPartenaireRepository" type="service" id="App\Repository\AdminPartenaireRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.niLDFWa" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="serializer" type="service" id="serializer"/>
+      </argument>
+    </service>
     <service id=".service_locator.o2hEQ6e" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5073,9 +5087,10 @@
         <argument key="adminSysteme" type="service" id=".errored..service_locator.rYDC814.App\Entity\AdminSysteme"/>
       </argument>
     </service>
-    <service id=".service_locator.6b_Qikl" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator._7qW3hm" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\AdminPartenaireController::ajout" type="service" id=".service_locator.niLDFWa"/>
         <argument key="App\Controller\AdminPartenaireController::delete" type="service" id=".service_locator.o2hEQ6e"/>
         <argument key="App\Controller\AdminPartenaireController::edit" type="service" id=".service_locator.o2hEQ6e"/>
         <argument key="App\Controller\AdminPartenaireController::index" type="service" id=".service_locator.DahkhtI"/>
@@ -5084,6 +5099,7 @@
         <argument key="App\Controller\AdminSystemeController::edit" type="service" id=".service_locator.rYDC814"/>
         <argument key="App\Controller\AdminSystemeController::index" type="service" id=".service_locator.OMVxoJC"/>
         <argument key="App\Controller\AdminSystemeController::show" type="service" id=".service_locator.rYDC814"/>
+        <argument key="App\Controller\AdminPartenaireController:ajout" type="service" id=".service_locator.niLDFWa"/>
         <argument key="App\Controller\AdminPartenaireController:delete" type="service" id=".service_locator.o2hEQ6e"/>
         <argument key="App\Controller\AdminPartenaireController:edit" type="service" id=".service_locator.o2hEQ6e"/>
         <argument key="App\Controller\AdminPartenaireController:index" type="service" id=".service_locator.DahkhtI"/>
@@ -5355,12 +5371,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.6b_Qikl"/>
+      <argument type="service" id=".service_locator._7qW3hm"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.6b_Qikl"/>
+      <argument type="service" id=".service_locator._7qW3hm"/>
     </service>
     <service id="fos_rest.serializer.form_error_handler.inner" class="JMS\Serializer\Handler\FormErrorHandler" public="false">
       <argument>null</argument>
@@ -5729,7 +5745,7 @@
     <service id="jms_serializer.accessor_strategy" alias="jms_serializer.accessor_strategy.default" public="false"/>
     <service id="JMS\Serializer\ContextFactory\SerializationContextFactoryInterface" alias="jms_serializer.configured_serialization_context_factory" public="false"/>
     <service id="JMS\Serializer\ContextFactory\DeserializationContextFactoryInterface" alias="jms_serializer.configured_deserialization_context_factory" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.6b_Qikl"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator._7qW3hm"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="api_platform.name_converter" alias="serializer.name_converter.metadata_aware"/>
