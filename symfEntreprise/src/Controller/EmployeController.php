@@ -47,7 +47,6 @@ class EmployeController extends AbstractController
             ->add('serviceId',EntityType::class,[
                 'class'=>Service::class,'choice_label'=>"libelle"
             ])
-            ->add('save', SubmitType::class, ['label' => 'Create Employe'])
             ->getForm();
             $form->HandleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
@@ -59,6 +58,7 @@ class EmployeController extends AbstractController
             }
         return $this->render('employe/add.html.twig', [
             'formAjout' => $form->createView(),
+            'editMode'=>$employe->getId()!== null
         ]);
     }
 
@@ -72,24 +72,6 @@ class EmployeController extends AbstractController
             'employe'=>$employe
         ]);
     }
-/**
- * @Route("/add/modifier/{id<\d+>}")
- */
-  /*  public function update(Request $request,Employe $employe){
-
-    $form = $this->createForm(EntityType::class,$employe);
-
-    $form->handleRequest($request);
-
-    if ($form->isSubmitted() && $form->isValid()) {
-        // va effectuer la requête d'UPDATE en base de données
-        $this->getDoctrine()->getManager()->flush();
-    }
-
-    return $this->render('employe/modification.html.twig', array(
-        'form' => $form->createView(),
-    ));
-    }*/
 
 /**
  * @Route("/affichage/delete/{id<\d+>}", name="delete")
@@ -100,7 +82,6 @@ public function delete(Employe $employe)
     
     $em->remove($employe);
     $em->flush();
-
     // redirige la page
     return $this->redirectToRoute('affichage');
 }

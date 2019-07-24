@@ -11,7 +11,15 @@
 
 <div class="example-wrapper">
     {{form_start(formAjout)}}
-    {{ form(formAjout) }}
+    {{ form_widget(formAjout) }}
+
+    <button type="submit" class="btn btn-success">
+        {% if editMode %}
+        Modifier
+        {% else %}
+        Ajouter
+        {% endif %}
+    </button>
     {{form_end(formAjout)}}
 </div>
 {% endblock %}
